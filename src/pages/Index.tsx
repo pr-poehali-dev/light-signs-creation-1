@@ -114,7 +114,7 @@ export default function Index() {
               <Icon name="Zap" size={16} className="text-[#0d0d0d]" />
             </div>
             <span className="font-['Oswald'] text-xl font-bold tracking-widest uppercase text-white">
-              ПРЕЗЕНТАЛ<span className="text-[#f5c842]"> 2.0</span>
+              ПРЕЗЕНТАЛЬ<span className="text-[#f5c842]"> 2.0</span>
             </span>
           </button>
 
@@ -589,11 +589,11 @@ export default function Index() {
               <Icon name="Zap" size={12} className="text-[#0d0d0d]" />
             </div>
             <span className="font-['Oswald'] text-base font-bold tracking-widest uppercase text-white">
-              ПРЕЗЕНТАЛ<span className="text-[#f5c842]"> 2.0</span>
+              ПРЕЗЕНТАЛЬ<span className="text-[#f5c842]"> 2.0</span>
             </span>
           </div>
           <p className="text-xs text-white/15 font-['Montserrat']">
-            © 2024 ПРЕЗЕНТАЛ 2.0. Производство световой рекламы
+            © 2024 ПРЕЗЕНТАЛЬ 2.0. Производство световой рекламы
           </p>
           <div className="flex gap-6">
             {[["services", "Услуги"], ["price", "Прайс"], ["contacts", "Контакты"]].map(([id, label]) => (
