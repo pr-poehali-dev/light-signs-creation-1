@@ -210,26 +210,11 @@ export default function Index() {
           <div className="relative hidden lg:block animate-fade-up">
             <div className="aspect-square rounded-sm overflow-hidden border border-[#f5c842]/20 relative">
               <img
-                src="https://cdn.poehali.dev/projects/f7362bed-824b-41bb-a54c-d0c724826ed8/files/a4a7e97e-783e-4fde-a556-b096935bcb82.jpg"
+                src="https://cdn.poehali.dev/projects/f7362bed-824b-41bb-a54c-d0c724826ed8/files/20199c3f-0454-47f7-9134-dc1343e62b08.jpg"
                 alt="Световая вывеска"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d]/60 via-transparent to-transparent" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <span
-                    className="font-['Oswald'] font-bold uppercase tracking-[0.25em] select-none"
-                    style={{
-                      fontSize: "clamp(4rem, 10vw, 7rem)",
-                      color: "#f5c842",
-                      textShadow: "0 0 30px rgba(245,200,66,0.8), 0 0 60px rgba(245,200,66,0.4), 0 0 100px rgba(245,200,66,0.2)",
-                      filter: "drop-shadow(0 0 15px rgba(245,200,66,0.6))",
-                    }}
-                  >
-                    КАФЕ
-                  </span>
-                </div>
-              </div>
             </div>
             <div className="absolute -bottom-6 -left-6 bg-[#141414] border border-white/[0.08] rounded-sm p-4 shadow-2xl">
               <div className="text-xs text-white/30 uppercase tracking-widest mb-1 font-['Montserrat']">Срок изготовления</div>
