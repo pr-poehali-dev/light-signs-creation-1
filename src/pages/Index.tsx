@@ -43,36 +43,12 @@ const PRICE_ITEMS = [
   { name: "Световой фасад (1 кв.м)", price: "от 14 000 ₽", note: "архитектурная подсветка" },
 ];
 
-const SIGN_TYPES = [
-  { id: "box", label: "Световой короб", base: 8500 },
-  { id: "letters", label: "Объёмные буквы", base: 4200 },
-  { id: "panel", label: "Световая панель", base: 6800 },
-  { id: "entrance", label: "Входная группа", base: 45000 },
-  { id: "facade", label: "Световой фасад", base: 14000 },
-];
-
-const BACKLIGHT_OPTIONS = [
-  { id: "standard", label: "Стандартная LED", mult: 1 },
-  { id: "rgb", label: "RGB динамическая", mult: 1.4 },
-  { id: "neon", label: "Неон-эффект", mult: 1.6 },
-];
 
 export default function Index() {
   const [activeSection, setActiveSection] = useState("home");
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [signType, setSignType] = useState(SIGN_TYPES[0]);
-  const [area, setArea] = useState(2);
-  const [backlight, setBacklight] = useState(BACKLIGHT_OPTIONS[0]);
-  const [installation, setInstallation] = useState(false);
   const [formData, setFormData] = useState({ name: "", phone: "", comment: "" });
   const [formSent, setFormSent] = useState(false);
-
-  const calcPrice = () => {
-    const base = signType.id === "entrance" ? signType.base : signType.base * area;
-    const withLight = base * backlight.mult;
-    const withInstall = installation ? withLight * 1.2 : withLight;
-    return Math.round(withInstall / 100) * 100;
-  };
 
   const scrollTo = (id: string) => {
     setMobileOpen(false);
@@ -99,10 +75,6 @@ export default function Index() {
     setFormSent(true);
   };
 
-  const rangeStyle = (val: number, min: number, max: number) => ({
-    background: `linear-gradient(to right, hsl(38, 92%, 55%) ${((val - min) / (max - min)) * 100}%, hsl(0, 0%, 20%) ${((val - min) / (max - min)) * 100}%)`
-  });
-
   return (
     <div className="min-h-screen bg-[#0d0d0d] text-[#f5f0e8]">
 
@@ -124,7 +96,6 @@ export default function Index() {
               ["services", "Услуги"],
               ["portfolio", "Портфолио"],
               ["price", "Прайс"],
-              ["calculator", "Калькулятор"],
               ["about", "О нас"],
               ["contacts", "Контакты"],
             ].map(([id, label]) => (
@@ -154,7 +125,6 @@ export default function Index() {
               ["services", "Услуги"],
               ["portfolio", "Портфолио"],
               ["price", "Прайс"],
-              ["calculator", "Калькулятор"],
               ["about", "О нас"],
               ["contacts", "Контакты"],
             ].map(([id, label]) => (
@@ -311,135 +281,6 @@ export default function Index() {
           <p className="mt-6 text-sm text-white/20 font-['Montserrat'] font-light">
             * Цены указаны без монтажа. Точную стоимость рассчитайте в калькуляторе ниже или оставьте заявку.
           </p>
-        </div>
-      </section>
-
-      {/* CALCULATOR */}
-      <section id="calculator" className="py-24 bg-[#0a0a0a]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-16">
-            <div className="text-xs tracking-widest text-[#f5c842] uppercase font-['Montserrat'] mb-3">Быстрый расчёт</div>
-            <h2 className="font-['Oswald'] text-4xl md:text-5xl font-bold uppercase text-white">Калькулятор</h2>
-            <div className="mt-4 w-16 h-0.5 bg-[#f5c842]" />
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div className="space-y-8">
-              <div>
-                <label className="text-xs uppercase tracking-widest text-white/30 font-['Montserrat'] block mb-4">Тип вывески</label>
-                <div className="grid grid-cols-1 gap-2">
-                  {SIGN_TYPES.map(type => (
-                    <button
-                      key={type.id}
-                      onClick={() => setSignType(type)}
-                      className={`text-left px-5 py-3.5 rounded-sm border transition-all font-['Montserrat'] text-sm font-medium ${
-                        signType.id === type.id
-                          ? "border-[#f5c842] bg-[#f5c842]/10 text-[#f5c842]"
-                          : "border-white/[0.06] bg-[#111111] text-white/50 hover:border-white/[0.15]"
-                      }`}
-                    >
-                      {type.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {signType.id !== "entrance" && (
-                <div>
-                  <label className="text-xs uppercase tracking-widest text-white/30 font-['Montserrat'] block mb-4">
-                    Площадь: <span className="text-[#f5c842] font-semibold">{area} кв.м</span>
-                  </label>
-                  <input
-                    type="range"
-                    min={1}
-                    max={20}
-                    value={area}
-                    onChange={e => setArea(Number(e.target.value))}
-                    className="calculator-range w-full"
-                    style={rangeStyle(area, 1, 20)}
-                  />
-                  <div className="flex justify-between mt-1">
-                    <span className="text-xs text-white/20 font-['Montserrat']">1 кв.м</span>
-                    <span className="text-xs text-white/20 font-['Montserrat']">20 кв.м</span>
-                  </div>
-                </div>
-              )}
-
-              <div>
-                <label className="text-xs uppercase tracking-widest text-white/30 font-['Montserrat'] block mb-4">Тип подсветки</label>
-                <div className="flex flex-col gap-2">
-                  {BACKLIGHT_OPTIONS.map(opt => (
-                    <button
-                      key={opt.id}
-                      onClick={() => setBacklight(opt)}
-                      className={`text-left px-5 py-3.5 rounded-sm border transition-all font-['Montserrat'] text-sm flex justify-between items-center ${
-                        backlight.id === opt.id
-                          ? "border-[#f5c842] bg-[#f5c842]/10 text-[#f5c842]"
-                          : "border-white/[0.06] bg-[#111111] text-white/50 hover:border-white/[0.15]"
-                      }`}
-                    >
-                      <span>{opt.label}</span>
-                      {opt.mult > 1 && <span className="text-xs opacity-60">×{opt.mult}</span>}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <label className="text-xs uppercase tracking-widest text-white/30 font-['Montserrat'] block mb-4">Монтаж</label>
-                <button
-                  onClick={() => setInstallation(!installation)}
-                  className={`flex items-center gap-3 px-5 py-3.5 rounded-sm border transition-all font-['Montserrat'] text-sm ${
-                    installation
-                      ? "border-[#f5c842] bg-[#f5c842]/10 text-[#f5c842]"
-                      : "border-white/[0.06] bg-[#111111] text-white/50 hover:border-white/[0.15]"
-                  }`}
-                >
-                  <div className={`w-4 h-4 rounded-sm border flex items-center justify-center transition-all ${installation ? "bg-[#f5c842] border-[#f5c842]" : "border-white/20"}`}>
-                    {installation && <Icon name="Check" size={10} className="text-[#0d0d0d]" />}
-                  </div>
-                  Включить монтаж (+20%)
-                </button>
-              </div>
-            </div>
-
-            <div className="lg:sticky lg:top-24">
-              <div className="bg-[#111111] rounded-sm p-8 border border-[#f5c842]/20 glow-gold">
-                <div className="text-xs uppercase tracking-widest text-white/20 font-['Montserrat'] mb-2">Предварительная стоимость</div>
-                <div className="font-['Oswald'] text-5xl md:text-6xl font-bold text-[#f5c842] mb-1">
-                  {calcPrice().toLocaleString("ru-RU")} ₽
-                </div>
-                <div className="text-sm text-white/20 font-['Montserrat'] font-light mb-8">
-                  Без НДС. Точный расчёт — после замеров.
-                </div>
-
-                <div className="space-y-3 mb-8 pb-8 border-b border-white/[0.05]">
-                  <div className="flex justify-between text-sm font-['Montserrat']">
-                    <span className="text-white/30">Тип</span>
-                    <span className="text-white/70">{signType.label}</span>
-                  </div>
-                  {signType.id !== "entrance" && (
-                    <div className="flex justify-between text-sm font-['Montserrat']">
-                      <span className="text-white/30">Площадь</span>
-                      <span className="text-white/70">{area} кв.м</span>
-                    </div>
-                  )}
-                  <div className="flex justify-between text-sm font-['Montserrat']">
-                    <span className="text-white/30">Подсветка</span>
-                    <span className="text-white/70">{backlight.label}</span>
-                  </div>
-                  <div className="flex justify-between text-sm font-['Montserrat']">
-                    <span className="text-white/30">Монтаж</span>
-                    <span className="text-white/70">{installation ? "Включён" : "Не включён"}</span>
-                  </div>
-                </div>
-
-                <button onClick={() => scrollTo("contacts")} className="btn-gold w-full py-4 text-sm rounded-sm text-center block">
-                  Получить точный расчёт
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
