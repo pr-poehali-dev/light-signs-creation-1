@@ -175,7 +175,7 @@ export default function Index() {
           <div>
             <div className="animate-fade-up-delay-1 inline-flex items-center gap-2 border border-[#f5c842]/30 rounded-full px-4 py-1.5 mb-8">
               <span className="w-2 h-2 rounded-full bg-[#f5c842] animate-pulse" />
-              <span className="text-xs font-['Montserrat'] tracking-widest text-[#f5c842] uppercase">Производство в Москве</span>
+              <span className="text-xs font-['Montserrat'] tracking-widest text-[#f5c842] uppercase">Производство в Иркутске</span>
             </div>
 
             <h1 className="animate-fade-up-delay-2 font-['Oswald'] text-5xl md:text-7xl font-bold uppercase leading-none mb-6 text-white">
