@@ -210,7 +210,7 @@ export default function Index() {
           <div className="relative hidden lg:block animate-fade-up">
             <div className="aspect-square rounded-sm overflow-hidden border border-[#f5c842]/20 relative">
               <img
-                src="https://cdn.poehali.dev/projects/f7362bed-824b-41bb-a54c-d0c724826ed8/files/8783e11f-e4b0-4695-9a82-9e906c1ad028.jpg"
+                src="https://cdn.poehali.dev/projects/f7362bed-824b-41bb-a54c-d0c724826ed8/files/a4a7e97e-783e-4fde-a556-b096935bcb82.jpg"
                 alt="Световая вывеска"
                 className="w-full h-full object-cover"
               />
